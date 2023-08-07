@@ -1,1 +1,52 @@
 hey there 
+
+# Terraform Instance Creation
+
+To create a virtual machine instance using Terraform, follow these steps:
+
+1. **Install Terraform:** If you haven't already, install Terraform by following the instructions on the [official website](https://www.terraform.io/downloads.html).
+
+2. **Create a Configuration File:** Create a new file named `main.tf` to define your infrastructure configuration.
+
+    ```hcl
+    provider "aws" {
+      region = "us-west-2"
+    }
+
+    resource "aws_instance" "example_instance" {
+      ami           = "ami-0c55b159cbfafe1f0"
+      instance_type = "t2.micro"
+      tags = {
+        Name = "ExampleInstance"
+      }
+    }
+    ```
+
+3. **Initialize Terraform:** Open a terminal in the same directory as your `main.tf` file and run the following commands:
+
+    ```shell
+    terraform init
+    ```
+
+4. **Preview Changes:** Run the following command to preview the changes Terraform will make:
+
+    ```shell
+    terraform plan
+    ```
+
+5. **Apply Changes:** If the preview looks good, apply the changes by running:
+
+    ```shell
+    terraform apply
+    ```
+
+6. **Destroy Resources (Optional):** If you want to destroy the created instance, you can run:
+
+    ```shell
+    terraform destroy
+    ```
+
+Remember to customize the configuration according to your needs. Once you're familiar with the basics, you can explore more advanced configurations and features that Terraform offers.
+
+For more information, refer to the [Terraform documentation](https://learn.hashicorp.com/tutorials/terraform/aws-build?in=terraform/aws-get-started).
+
